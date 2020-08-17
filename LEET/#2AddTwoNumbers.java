@@ -20,42 +20,39 @@ Explanation: 342 + 465 = 807.
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummy_head = new ListNode(0);  //creating head of linked list
+        ListNode l3 = dummy_head;               // making our new linked list l3 point to null or 0
         
-        ListNode dummy_head = new ListNode(0);
-        ListNode l3 = dummy_head;
-        
-        int carry = 0;
-        
-        while(l1!=null || l2!=null){
+        int carry = 0;                     //carry check
+        while (l1!=null || l2!=null){      //check if end of linked list is not reached
+            int l1_val = (l1!=null) ? l1.val : 0;      //take l1 value
+            int l2_val = (l2!=null) ? l2.val : 0;      //take l2 value
             
-            int l1_val = (l1!=null)?l1.val:0;
-            int l2_val = (l2!=null)?l2.val:0;
+            int sum = l1_val+l2_val+carry;            //get the sum of respective digits as well as carry
+            carry = sum/10;                           //to get the digit to be carried over to next node
+            int last_digit = sum%10;                  //to get our digit to be appended to l3 as sum result
+                                                     //Previous step needed due to carry check
             
-            int current_sum = l1_val + l2_val + carry;
             
-            carry = current_sum/10;
-            int last_digit = current_sum % 10;
+            ListNode new_node = new ListNode(last_digit);  //Creating node with the last_digit as it is now                                                              //our final output to be chained to l3
+            l3.next = new_node;                            //making our linked list l3 point to result node
+                                                           //after each sum calculation
             
-            ListNode new_node = new ListNode(last_digit);
-            l3.next = new_node;
-            if(l1!=null) l1 = l1.next;
-            if(l2!=null) l2 = l2.next;
-            
-            l3 = l3.next;
-              
-            
+            if (l1!=null) l1 = l1.next;                    //Traversing l1
+            if (l2!=null) l2 = l2.next;                    //traversing l2
+            l3 = l3.next;                                  //Making l3 point to current node so that the next                                                            //entry can be chained or appended to it
         }
         
         if(carry>0){
             
-            ListNode new_node = new ListNode(carry);
+            ListNode new_node = new ListNode(carry);     //check for carry after last step
             l3.next = new_node;
             l3 = l3.next;
         }
         
        return dummy_head.next; 
-        
     }
 }
