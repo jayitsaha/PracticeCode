@@ -1,1 +1,1 @@
-This repo is for competitive programming
+This repo is for competitive programming in leetcode
