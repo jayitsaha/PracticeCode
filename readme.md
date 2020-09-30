@@ -1,1 +1,1 @@
-This repo is for competetive programming
+This repo is for competitive programming
