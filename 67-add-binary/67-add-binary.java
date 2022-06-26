@@ -8,7 +8,7 @@ class Solution {
         int carry = 0; //carry is set to 0
         
 //         now what we need to do is, start a while loop from the end of the two strings to the start
-//         and keep checking is any of the string still alive, if alive then we can add bub
+//         and keep checking is any of the string still alive, if alive then we can add
         
         while(i>=0 || j>=0){
             
