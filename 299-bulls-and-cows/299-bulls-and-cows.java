@@ -10,9 +10,11 @@ class Solution {
             secretmap.put(key, secretmap.getOrDefault(key, 0)+1);
         }
         
-        int bull = 0; 
-        int cow = 0; 
         
+        
+        int bull = 0; 
+        int cow = 0;             
+
         for (int i=0; i<len; i++) {
             int key = guess.charAt(i)-'0';
             int sec =  secret.charAt(i)-'0';
